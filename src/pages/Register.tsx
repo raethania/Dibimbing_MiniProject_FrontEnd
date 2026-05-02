@@ -42,9 +42,9 @@ export default function Register() {
   }
 
   return (
-    <div className='h-dvh w-dvw p-3'>
-      <div className='flex max-w-400 gap-10 h-full mx-auto'>
-        <div className='flex-1 self-center mx-5'>
+    <div className='p-3 h-dvh w-dvw'>
+      <div className='flex h-full gap-10 mx-auto max-w-400'>
+        <div className='self-center flex-1 mx-5'>
           <div className='mb-10'>
             <h1 className='text-center'>Create a New Account</h1>
             <p>Please enter your details.</p>
@@ -68,7 +68,7 @@ export default function Register() {
           <p className='mt-5'>Already have an account? <Link to="/login">Sign In</Link></p>
         </div>
 
-        <div className='hidden md:block flex-1 rounded-lg bg-gray-400'>
+        <div className='flex-1 hidden bg-gray-400 rounded-lg md:block'>
         
         </div>
       </div>

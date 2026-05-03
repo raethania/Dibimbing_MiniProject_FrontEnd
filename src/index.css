@@ -2,11 +2,19 @@
 
 @layer base {
   h1 {
-    @apply text-4xl font-bold;
+    @apply md:text-4xl text-3xl font-bold text-neutral-800;
+  }
+  h2 {
+    @apply md:text-3xl text-2xl text-neutral-800 font-semibold;
   }
 
+  h3 {
+    @apply text-base md:text-[22px] text-neutral-800 font-semibold;
+  }
+  
+
   p {
-    @apply text-[#5E6064] text-center;
+    @apply text-zinc-500 text-sm md:text-[14px] font-normal;
   }
 
   label {

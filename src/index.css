@@ -30,7 +30,7 @@
   
 
   p {
-    @apply text-zinc-500 text-sm md:text-[22px] font-normal;
+    @apply text-zinc-500 text-sm md:text-[16px] font-normal;
   }
 
   label {
@@ -41,10 +41,6 @@
 @layer components {
   .input-form {
     @apply border border-[#E2E2E2] rounded-md p-2 h-10 mb-2;
-  }
-
-  .submit {
-    @apply p-2 h-10 bg-[#5FCD73] text-white rounded-md mt-3;
   }
 
   .button-primary {

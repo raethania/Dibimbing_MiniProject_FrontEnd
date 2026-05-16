@@ -1,6 +1,11 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import api from '../../api/api.ts'
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import api from "../../api/api";
+import AuthLayout from "../components/auth/AuthLayout";
+import FormField from "../components/auth/FormField";
+import AuthMessage from "../components/auth/AuthMessage";
+
+const DEFAULT_ROLE = "student";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -10,68 +15,61 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
-  const role = "student"
 
   const handleRegister = async (event: React.FormEvent) => {
     event.preventDefault();
-      setMessage("");
-      setError("");
+    setMessage("");
+    setError("");
 
-      try {
-        const response = await api.post('auth/register/', {
-          name,
-          email, 
-          password,
-          role
-        })
-
-        setMessage("Register berhasil. Silakan login.");
-        console.log("REGISTER SUCCESS:", response.data);
-
-        setTimeout(() => {
-          navigate("/login");
-        }, 1000);
-      } catch(err: any) {
-          console.log("REGISTER ERROR:", err.response?.data);
-
-          setError(
-            err.response?.data?.message || "Register gagal. Periksa kembali data."
-          );
-      }
-    
-  }
+    try {
+      await api.post("auth/register/", {
+        name, email, password, role: DEFAULT_ROLE,
+      });
+      setMessage("Register berhasil. Silakan login.");
+      setTimeout(() => navigate("/login"), 1000);
+    } catch (err: any) {
+      setError(err.response?.data?.message || "Register gagal. Periksa kembali data.");
+    }
+  };
 
   return (
-    <div className='p-3 h-dvh w-dvw'>
-      <div className='flex h-full gap-10 mx-auto max-w-400'>
-        <div className='self-center flex-1 mx-5'>
-          <div className='mb-10'>
-            <h1 className='text-center mb-4'>Create a New Account</h1>
-            <p className='text-center'>Please enter your details.</p>
-            {message && <p style={{ color: "green" }}>{message}</p>}
-            {error && <p style={{ color: "red" }}>{error}</p>}
-          </div>
+    <AuthLayout>
+      <header className="mb-10 text-center">
+        <h1 className="mb-4 text-5xl">Create a New Account</h1>
+        <p>Please enter your details.</p>
+        <AuthMessage message={message} error={error} />
+      </header>
 
-          <form onSubmit={handleRegister} className='flex flex-col'>
+      <form onSubmit={handleRegister} className="flex flex-col">
+        <FormField
+          label="Name"
+          id="name"
+          placeholder="Enter name"
+          value={name}
+          onChange={setName}
+        />
+        <FormField
+          label="Email Address"
+          id="email"
+          type="email"
+          placeholder="Enter email address"
+          value={email}
+          onChange={setEmail}
+        />
+        <FormField
+          label="Password"
+          id="password"
+          type="password"
+          placeholder="Enter password"
+          value={password}
+          onChange={setPassword}
+        />
+        <button type="submit" className="button-primary">Register</button>
+      </form>
 
-            <label htmlFor="name">Name</label> 
-            <input type="text" name="name" id="name" placeholder='Enter name' className='input-form' value={name} onChange={e => setName(e.target.value)}/>
-
-            <label htmlFor="email">Email Address</label> 
-            <input type="email" name="email" id="email" placeholder='Enter email address' className='input-form' value={email} onChange={e => setEmail(e.target.value)}/>
-
-            <label htmlFor="password">Password</label> 
-            <input type="password" name="password" id="password" placeholder='Enter password address' className='input-form' value={password} onChange={e => setPassword(e.target.value)}/>
-
-            <input type="submit" value={"login"} className='submit'/>
-          </form>
-          <p className='mt-5'>Already have an account? <Link to="/login">Sign In</Link></p>
-        </div>
-
-        <div className='flex-1 hidden bg-gray-400 rounded-lg md:block'>
-        
-        </div>
-      </div>
-    </div>
-  )
+      <p className="mt-5 text-[16px]">
+        Already have an account? <Link to="/login" className="text-blue-800 font-semibold underline">Sign In</Link>
+      </p>
+    </AuthLayout>
+  );
 }

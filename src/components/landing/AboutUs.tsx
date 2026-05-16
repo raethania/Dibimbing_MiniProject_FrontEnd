@@ -36,7 +36,7 @@ export default function AboutUs() {
       {/* Stats */}
       <div className='flex flex-col justify-end border-t-2 border-zinc-600/80'>
         <p className="text-[42px] text-indigo-700">50+</p>
-        <p className="text-zinc-600">Learn new skills anytime.</p>
+        <p className="text-zinc-600 text-[22px]">Learn new skills anytime.</p>
       </div>
 
       {/* Feature Cards */}

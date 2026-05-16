@@ -1,28 +1,40 @@
 @import "tailwindcss";
 
+@theme {
+  --color-hotpink : #C72350;
+  --color-babypink: #FFC3D4;
+}
+
 @layer base {
   h1 {
-    @apply md:text-4xl text-3xl font-bold text-neutral-800;
+    @apply text-[64px] font-bold text-neutral-800;
   }
+
+  /* h1 */
   h2 {
-    @apply md:text-3xl text-2xl text-neutral-800 font-semibold;
+    @apply md:text-[48px] text-3xl font-bold text-neutral-800;
   }
 
   h3 {
-    @apply text-base md:text-[22px] text-neutral-800 font-semibold;
+    @apply text-[32px] text-neutral-800;
+  }
+
+  /* h2 */
+  h4 {
+    @apply md:text-3xl text-2xl text-neutral-800;
+  }
+  /* h3 */
+  h5 {
+    @apply text-base md:text-[22px] text-neutral-800;
   }
   
 
   p {
-    @apply text-zinc-500 text-sm md:text-[14px] font-normal;
+    @apply text-zinc-500 text-sm md:text-[22px] font-normal;
   }
 
   label {
     @apply m-1 font-bold;
-  }
-
-  a {
-    @apply text-[#5FCD73];
   }
 }
 
@@ -33,5 +45,13 @@
 
   .submit {
     @apply p-2 h-10 bg-[#5FCD73] text-white rounded-md mt-3;
+  }
+
+  .button-primary {
+    @apply bg-hotpink hover:bg-[#B12148] active:bg-[#831835] text-center py-2 text-white rounded-full inline-block;
+  }
+
+  .button-secondry {
+    @apply bg-babypink hover:bg-[#FFA3BD] active:bg-[#FF97B4] text-center py-2 text-hotpink rounded-full inline-block;
   }
 }

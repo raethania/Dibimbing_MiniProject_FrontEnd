@@ -46,8 +46,8 @@ export default function Register() {
       <div className='flex h-full gap-10 mx-auto max-w-400'>
         <div className='self-center flex-1 mx-5'>
           <div className='mb-10'>
-            <h1 className='text-center'>Create a New Account</h1>
-            <p>Please enter your details.</p>
+            <h1 className='text-center mb-4'>Create a New Account</h1>
+            <p className='text-center'>Please enter your details.</p>
             {message && <p style={{ color: "green" }}>{message}</p>}
             {error && <p style={{ color: "red" }}>{error}</p>}
           </div>

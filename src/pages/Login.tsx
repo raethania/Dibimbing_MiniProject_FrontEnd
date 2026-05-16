@@ -4,7 +4,6 @@ import api from '../../api/api';
 import useAuth from "../../hooks/useAuth";
 
 
-
 export default function Login() {
   const navigate = useNavigate();
   const {login} = useAuth();
@@ -47,11 +46,13 @@ export default function Login() {
 
   return (
     <div className='p-3 h-dvh w-dvw'>
+      {/* Center Container */}
       <div className='flex h-full gap-10 mx-auto max-w-400'>
+        {/* Form Section */}
         <div className='self-center flex-1 mx-5'>
           <div className='mb-10'>
-            <h1 className='text-center'>Welcome Back</h1>
-            <p>Please enter your details.</p>
+            <h1 className='text-center mb-4'>Welcome Back</h1>
+            <p className='text-center'>Please enter your details.</p>
             {message && <p style={{ color: "green" }}>{message}</p>}
             {error && <p style={{ color: "red" }}>{error}</p>}
           </div>
@@ -66,6 +67,8 @@ export default function Login() {
           </form>
           <p className='mt-5'>Don't have an account? <Link to="/register">Sign Up</Link></p>
         </div>
+
+        {/* Image Section */}
         <div className='flex-1 hidden bg-gray-400 rounded-lg md:block'>
         
         </div>

@@ -7,6 +7,7 @@ import Register from './pages/Register'
 import { AuthProvider } from './context/AuthContext'
 import HomeScreen from './pages/HomeScreen'
 import Landingpage from './pages/Landingpage'
+import ProtectedRoute from './components/common/ProtectedRoute'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -16,7 +17,11 @@ createRoot(document.getElementById('root')!).render(
               <Route path="/" element={<Landingpage/>}></Route>
               <Route path="/login" element={<Login/>}></Route>
               <Route path="/register" element={<Register/>}></Route>
-              <Route path="/home" element={<HomeScreen/>}></Route>
+              <Route path="/home" element={
+                <ProtectedRoute>
+                  <HomeScreen/>
+                </ProtectedRoute>
+              }></Route>
           </Routes>
         </AuthProvider>
       </BrowserRouter>

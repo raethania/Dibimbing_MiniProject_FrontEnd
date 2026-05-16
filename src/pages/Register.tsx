@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import api from "../../api/api";
 import AuthLayout from "../components/auth/AuthLayout";
 import FormField from "../components/auth/FormField";
 import AuthMessage from "../components/auth/AuthMessage";
+import api from "../api/api";
 
 const DEFAULT_ROLE = "student";
 

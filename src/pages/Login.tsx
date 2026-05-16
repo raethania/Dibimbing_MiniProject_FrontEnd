@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import api from "../../api/api";
-import useAuth from "../../hooks/useAuth";
 import AuthLayout from "../components/auth/AuthLayout";
 import FormField from "../components/auth/FormField";
 import AuthMessage from "../components/auth/AuthMessage";
+import api from "../api/api";
+import useAuth from "../hooks/useAuth";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ export default function Login() {
       const response = await api.post("auth/login/", { email, password });
       login(response.data.data.token);
       setMessage("Login berhasil.");
-      setTimeout(() => navigate("/user"), 1000);
+      setTimeout(() => navigate("/home"), 1000);
     } catch (err: any) {
       setError(err.response?.data?.message || "Login gagal. Periksa kembali data.");
     }

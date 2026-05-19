@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import type { ReactNode } from "react";
+import api from "../api/api";
 
 type AuthContextType = {
     token: string | null;
@@ -23,7 +24,12 @@ export function AuthProvider({children} : AuthProviderProps){
         setToken(newToken);
     }
 
-    const logout = () => {
+    const logout = async () => {
+        try {
+            await api.post("/api/v1/auth/logout");
+        } catch (error) {
+            console.error("Logout error", error);
+        }
         localStorage.removeItem("token");
         setToken(null);
     };

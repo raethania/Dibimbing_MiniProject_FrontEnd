@@ -22,7 +22,7 @@ export default function Register() {
     setError("");
 
     try {
-      await api.post("auth/register/", {
+      await api.post("/auth/register", {
         name, email, password, role: DEFAULT_ROLE,
       });
       setMessage("Register berhasil. Silakan login.");

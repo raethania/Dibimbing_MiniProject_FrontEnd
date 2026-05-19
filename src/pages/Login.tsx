@@ -21,7 +21,7 @@ export default function Login() {
     setError("");
 
     try {
-      const response = await api.post("auth/login/", { email, password });
+      const response = await api.post("/auth/login", { email, password });
       login(response.data.data.token);
       setMessage("Login berhasil.");
       setTimeout(() => navigate("/home"), 1000);
